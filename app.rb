@@ -4,18 +4,15 @@ require "http"
 require "json"
 
 get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+
     # build the API url, including the API key in the query string
     api_url = "http://api.exchangerate.host/list?access_key=#{ENV['EXCHANGE_RATES_KEY']}"
     
     #response = HTTP.get(api_url)
     #@parsed = JSON.parse(response.to_s)
 
-    parsed_data = JSON.parse(HTTP.get(api_url).to_s)
-    @parsed = parsed_data["currencies"]
+    @parsed_data = JSON.parse(HTTP.get(api_url).to_s)
+    @parsed = @parsed_data["currencies"]
     erb(:homepage)
 end
 
