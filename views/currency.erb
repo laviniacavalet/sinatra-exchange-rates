@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Homepage</title>
-</head>
-<body>
-  <h1>Currency pairs</h1>
-  <%= @parsed %>
-</body>
-</html>
+<h1>Convert <%= @original_currency%></h1>
+
+<p>Go <a href="/">back</a>.</p>
+
+    <ul>
+      <% @parsed.each do |key, value|%>
+      <li>
+        <a href=<%="/#{@original_currency}/#{key}"%>>
+          Convert 1 <%= @original_currency %> to <%= key %>...
+        </a>
+      </li>
+      <% end %>
+    </ul>
